@@ -1,0 +1,4 @@
+RenderPathsPlugin
+
+
+		"start": "wp-scripts start --webpack-copy-php",

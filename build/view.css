@@ -1,0 +1,21 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.wp-block-b-blocks-blockname {
+  box-sizing: border-box;
+}
+.wp-block-b-blocks-blockname * {
+  box-sizing: border-box;
+}
+.wp-block-b-blocks-blockname .bBlocksBlockName {
+  display: inline-block;
+}
+.wp-block-b-blocks-blockname .icon {
+  font-style: inherit;
+}
+.wp-block-b-blocks-blockname img {
+  width: 100%;
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=view.css.map*/
