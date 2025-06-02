@@ -5,7 +5,7 @@ const { createBlock } = wp.blocks;
 import { text } from '../Common/dummyData';
 import Style from '../Common/Style';
 import Settings from './Settings/Settings';
-
+// table > tr * 2 > td * 3 > lorem4
 const Edit = props => {
 	const { attributes, setAttributes, clientId } = props;
 	const { loremText } = attributes;
