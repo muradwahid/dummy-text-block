@@ -5,16 +5,16 @@ import Style from './Components/Common/Style';
 import LoremIpsum from './Components/Frontend/LoremIpsum';
 
 document.addEventListener('DOMContentLoaded', () => {
-	const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-lorem-ipsum');
-	blockNameEls.forEach(blockNameEl => {
-		const attributes = JSON.parse(blockNameEl.dataset.attributes);
+	const loremIpsumEls = document.querySelectorAll('.wp-block-b-blocks-lorem-ipsum');
+	loremIpsumEls.forEach(loremIpsumEl => {
+		const attributes = JSON.parse(loremIpsumEl.dataset.attributes);
 
-		createRoot(blockNameEl).render(<>
-			<Style attributes={attributes} id={blockNameEl.id} />
-
+		createRoot(loremIpsumEl).render(<>
+			<Style attributes={attributes} id={loremIpsumEl.id} />
+			
 			<LoremIpsum attributes={attributes} />
 		</>);
 
-		blockNameEl?.removeAttribute('data-attributes');
+		loremIpsumEl?.removeAttribute('data-attributes');
 	});
 });

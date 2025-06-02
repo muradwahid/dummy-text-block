@@ -19,6 +19,10 @@
 		"content":{
 			"type": "string",
 			"default": ""
+		},
+		"loremText":{
+			"type": "string",
+			"default":""
 		}	
 	
 	},

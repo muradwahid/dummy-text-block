@@ -80,7 +80,15 @@ __webpack_require__.r(__webpack_exports__);
 const LoremIpsum = ({
   attributes
 }) => {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null);
+  const {
+    loremText
+  } = attributes;
+  console.log(loremText);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    dangerouslySetInnerHTML: {
+      __html: loremText
+    }
+  });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoremIpsum);
 
@@ -205,16 +213,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-lorem-ipsum');
-  blockNameEls.forEach(blockNameEl => {
-    const attributes = JSON.parse(blockNameEl.dataset.attributes);
-    (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(blockNameEl).render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Style__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  const loremIpsumEls = document.querySelectorAll('.wp-block-b-blocks-lorem-ipsum');
+  loremIpsumEls.forEach(loremIpsumEl => {
+    const attributes = JSON.parse(loremIpsumEl.dataset.attributes);
+    (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(loremIpsumEl).render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Style__WEBPACK_IMPORTED_MODULE_3__["default"], {
       attributes: attributes,
-      id: blockNameEl.id
+      id: loremIpsumEl.id
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Frontend_LoremIpsum__WEBPACK_IMPORTED_MODULE_4__["default"], {
       attributes: attributes
     })));
-    blockNameEl?.removeAttribute('data-attributes');
+    loremIpsumEl?.removeAttribute('data-attributes');
   });
 });
 })();
