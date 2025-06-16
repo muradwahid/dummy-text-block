@@ -1,0 +1,51 @@
+How to Use the Lorem Ipsum Block
+This block allows you to quickly generate dummy content using simple, Emmet-like patterns.
+You can use these patterns in the block’s input field and press <kbd>Tab</kbd> or <kbd>Space</kbd> to generate the content.
+
+✨ Supported Patterns
+1. Generate Words
+Just a number:
+Type 5 to generate 5 lorem ipsum words.
+
+loremN:
+Type lorem10 to generate 10 lorem ipsum words.
+
+2. Basic HTML Tags
+Paragraph:
+p>lorem5
+→ Generates a paragraph with 5 lorem words.
+
+Heading:
+h2>lorem3
+→ Generates an <h2> with 3 lorem words.
+
+List:
+ul>li*3>lorem2
+→ Generates an unordered list with 3 items, each with 2 lorem words.
+
+3. Multiplication
+Multiple Elements:
+p*3>lorem4
+→ Generates 3 paragraphs, each with 4 lorem words.
+
+4. Tables
+Table with Rows and Columns:
+table>tr*2>td*3>lorem2
+→ Generates a table with 2 rows and 3 columns, each cell with 2 lorem words.
+
+5. Combinations
+Multiple Siblings:
+h2>lorem2, p>lorem6
+→ Generates an <h2> with 2 words and a <p> with 6 words.
+
+6. Shorthand
+Any tag with a number:
+p>4
+→ Same as p>lorem4, generates a paragraph with 4 lorem words.
+
+
+ul>li*3>lorem2
+table>tr*2>td*3>lorem4
+h2>lorem2, p>lorem6
+blockquote>lorem3
+pre>lorem3

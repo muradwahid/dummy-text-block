@@ -1,24 +1,22 @@
 import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { ToggleControl } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 import { useEffect, useRef, useState } from 'react';
+import { text } from './Common/dummyData';
 const { dispatch } = wp.data
 const { createBlock } = wp.blocks;
-import { text } from '../Common/dummyData';
-import Style from '../Common/Style';
-import Settings from './Settings/Settings';
 // table > tr * 2 > td * 3 > lorem4
 const Edit = props => {
 	const { attributes, setAttributes, clientId } = props;
-	const { loremText } = attributes;
+	const { isBlockReplace } = attributes;
 	const [content, setContent] = useState('');
-	const [dummyContent, setDummyContent] = useState('');
 	const editorRef = useRef(null);
 	const editor = document.getElementById('editor');
 
 	useEffect(() => {
 		const handleMouseDown = (e) => {
-			if (e.key === 'Tab' || e.key === ' ' || e.keyCode === 32) {
+			if (e.key === 'Tab' || e.key === 'Enter') {
 				const generatedContent = generateElement(content);
-				setDummyContent(generatedContent);
 
 				// Insert appropriate blocks based on generated content
 				insertAppropriateBlocks(generatedContent);
@@ -33,8 +31,8 @@ const Edit = props => {
 		}
 
 	}, [editorRef.current, content])
-	
-	
+
+
 	const insertAppropriateBlocks = (generatedContent) => {
 		// Helper: recursively parse HTML and return Gutenberg blocks
 		function parseTableSection(sectionHtml) {
@@ -136,15 +134,20 @@ const Edit = props => {
 				blocks.push(createBlock('core/paragraph', { content: trailing }));
 			}
 			return blocks;
-	}
+		}
 
 		const blocks = htmlToBlocks(generatedContent);
-		blocks.forEach(block => dispatch('core/block-editor').insertBlocks(block));
+
+		if (attributes.isBlockReplace) {
+			dispatch('core/block-editor').replaceBlock(clientId, blocks);
+		} else {
+			blocks.forEach(block => dispatch('core/block-editor').insertBlocks(block));
+		}
 	};
 
 	function generateElement(str) {
 		// Helper to get lorem text
-		const getLorem = (count) => text.split(/\s+/).slice(0, count).join(' ');
+		// const getLorem = (count) => text.split(/\s+/).slice(0, count).join(' ');
 
 		// Recursive parser
 		function parsePattern(pattern) {
@@ -186,12 +189,20 @@ const Edit = props => {
 			}
 
 			// loremN
-			const loremPattern = /^lorem(\d+)$/i;
+			// const loremPattern = /^lorem(\d+)$/i;
+			const loremPattern = /^lorem(\d*)$/i;
 			match = pattern.match(loremPattern);
 			if (match) {
-				return getLorem(parseInt(match[1], 10));
+				// return getLorem(parseInt(match[1], 10));
+				const count = match[1] ? parseInt(match[1], 10) : 20;
+				return getLorem(count);
 			}
 
+			// Standalone number (e.g., "4")
+			const numberPattern = /^\d+$/;
+			if (numberPattern.test(pattern)) {
+				return getLorem(parseInt(pattern, 10));
+			}
 			// Fallback: just return as is
 			return pattern;
 		}
@@ -200,22 +211,16 @@ const Edit = props => {
 	}
 
 	return <>
-		<Settings {...{ attributes, setAttributes }} />
 
 		<div {...useBlockProps()}>
-			<Style attributes={attributes} id={`block-${clientId}`} />
-
-			<div>
-				<RichText
-					tagName="div"
-					ref={editorRef}
-					value={content}
-					onChange={val => setContent(val)}
-					placeholder="Type your content here, e.g., p>lorem2 or p5"
-				/>
-				{/* <div style={{ marginTop: "20px" }} dangerouslySetInnerHTML={{ __html: loremText }} /> */}
-				{/* <p>Lorem ipsum dolor sit.</p> */}
-			</div>
+			<ToggleControl label={__("Replace block on Tab/Enter", "lorem-ipsum")} checked={isBlockReplace} value={isBlockReplace} onChange={value => setAttributes({ isBlockReplace: value })} help={isBlockReplace ? __("When enabled, pressing Tab/Enter with abbreviation will replace this block.", "lorem-ipsum") : __("When disabled, new blocks will be inserted.","lorem-ipsum")} />
+			<RichText
+				tagName="div"
+				ref={editorRef}
+				value={content}
+				onChange={val => setContent(val)}
+				placeholder="Type abbreviations syntax and press Tab or ↩ e.g. h2>lorem5"
+			/>
 		</div>
 
 

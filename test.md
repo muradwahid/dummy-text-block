@@ -1,9 +1,9 @@
-=== Lorem Ipsum ===
+=== Plugin Name ===
 Contributors:		bplugins
 Donate link:		https://gum.co/wpdonate/
-Tags:				block, lorem ipsum, dummy content, emmet, content generator
-Requires at least:	6.5+
-Tested up to:		6.8
+Tags:				block, key1, key2, key3, key4
+Requires at least:	6.3+
+Tested up to:		6.5.5
 Stable tag:			1.0.0
 Requires PHP:		7.2
 License:			GPLv3 or later
@@ -15,17 +15,18 @@ Use Emmet like abbreviations to quickly create dummy content in Gutenberg. suppo
 
 This is a custom Gutenberg block that allows users to generate complex block structures quickly using shorthand syntax (similar to Emmet in web development). When a user types an abbreviation and presses Tab or Enter.
 
-- Replaces itself with the generated content (default behavior)
-- Inserts new blocks after itself (if enabled)
+-Replaces itself with the generated content (default behavior)
+-Inserts new blocks after itself (if enabled)
 
+## Key Features
 ### Abbreviation Syntax:
 
 - p>lorem5 → Creates a paragraph with 5 word.
 - h2>lorem5 → Creates a heading with 5 words.
 - ul>li*3>lorem4 → Creates a bullet list with 3 items.
 - table>tr*2>td*3>lorem4 → Generates a 2x3 table.
-- group>h2>lorem5 → Creates a Group block with a heading.
-- h2>Title, p>lorem20 → Creates a heading and a paragraph as sibling.
+- group>h2>Title, p>lorem20 → Creates a Group block with a heading and paragraph.
+- h2>Title, p>lorem20 → Creates a heading and a paragraph as sibling blocks.
 
 ## Converts HTML to Gutenberg Blocks:
 
@@ -43,7 +44,18 @@ This is a custom Gutenberg block that allows users to generate complex block str
 
 * For installation help click on Installation Tab
 
+
+### User Feedback
+
+#### ⭐⭐⭐⭐⭐ [Rating Title](rating link)
+
+❛❛***Rating Description***❜❜
+
+***-[Rating User](rating user url)***
+
+
 #### - Did you like this plugin? Dislike it? Have a feature request? [Please share your feedback with us](mailto:support@bplugins.com 'Send feedback')
+
 
 ### ⭐ Check out our other WordPress Plugins-
 
@@ -97,14 +109,29 @@ You can use unlimited times as you want.
 You can post your questions on the [support forum here](https://wordpress.org/support/plugin/plugin-slug/)
 
 
+== Screenshots ==
+
+1. Screenshot 1
+2. Screenshot 2
+
+
 == Changelog ==
 
 = 1.0.0 =
 * Initial Release
 
 
+== External Service Integration ==
+
+= Service Name: package.js =
+- Docs link: package docs link
+
 
 == Developer Notes ==
+
+* Assets file name
+assets file destination. ex: public/js/*.min.js
+
 
 * Public source code GitHub link for review, study, and contribute.
 

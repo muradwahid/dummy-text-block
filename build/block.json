@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "title": "Lorem Ipsum",
   "category": "widgets",
-  "description": "Short description of the block",
+  "description": "Use Emmet like abbreviations to quickly create dummy content in Gutenberg. supports custom lorem word counts and block replacement.",
   "keywords": [
     "lorem",
     "ipsum"
@@ -15,6 +15,10 @@
     "align": {
       "type": "string",
       "default": ""
+    },
+    "isBlockReplace": {
+      "type": "boolean",
+      "default": true
     },
     "content": {
       "type": "string",
@@ -35,13 +39,5 @@
   "example": {
     "attributes": {}
   },
-  "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
-  "style": "file:./view.css",
-  "render": "file:./render.php",
-  "viewScript": [
-    "file:./view.js",
-    "react",
-    "react-dom"
-  ]
+  "editorScript": "file:./index.js"
 }
